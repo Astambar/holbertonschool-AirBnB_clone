@@ -7,10 +7,9 @@ from global_usage import *
 from models import storage
 import models
 import shlex
-console = console.HBNBCommand
-
 import pycodestyle
 from datetime import datetime
+console = console.HBNBCommand
 
 
 class TestHBNBCommand(unittest.TestCase):
@@ -24,6 +23,7 @@ class TestHBNBCommand(unittest.TestCase):
     def test_prompt(self):
         """test the prompt format"""
         self.assertEqual(console.prompt, "(hbnb) ")
+
 
 if __name__ == '__main__':
     unittest.main()
