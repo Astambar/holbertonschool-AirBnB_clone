@@ -8,56 +8,37 @@ from models import storage
 import models
 import shlex
 console = console.HBNBCommand
+
+
 class DefaultConsoleTest(unittest.TestCase):
     def test_default_EOF(self):
-        self.assertEqual(console.do_EOF(self,''), True)
-        self.assertTrue(console.do_EOF(self,''))
+        "test"
+        self.assertEqual(console.do_EOF(self, ''), True)
+        self.assertTrue(console.do_EOF(self, ''))
+
     def test_default_emptyline(self):
+        "test"
         self.assertEqual(console.emptyline(self), None)
+
     def test_default_quit(self):
-        self.assertEqual(console.do_quit(self,''), True)
-        self.assertTrue(console.do_quit(self,''))
+        "test"
+        self.assertEqual(console.do_quit(self, ''), True)
+        self.assertTrue(console.do_quit(self, ''))
+
     def test_default_create(self):
-        self.assertEqual(console.do_create(self,'Amenity'), None)
+        "test"
+        self.assertEqual(console.do_create(self, 'Amenity'), None)
+
     def test_default_show(self):
-        self.assertEqual(console.do_show(self,'Amenity'), None)
+        "test"
+        self.assertEqual(console.do_show(self, 'Amenity'), None)
+
     def test_default_destroy(self):
-        self.assertEqual(console.do_destroy(self,''), False)
-        self.assertFalse(console.do_destroy(self,''))        
+        "test"
+        self.assertEqual(console.do_destroy(self, ''), False)
+        self.assertFalse(console.do_destroy(self, ''))
+
     def test_default_update(self):
-        self.assertEqual(console.do_update(self,''), False)
-        self.assertFalse(console.do_update(self,''))
-    def test_default_EOF(self):
-        self.assertEqual(console.do_EOF(self,''), True)
-    def test_default_EOF(self):
-        self.assertEqual(console.do_EOF(self,''), True)
-    def test_default_EOF(self):
-        self.assertEqual(console.do_EOF(self,''), True)
-    def test_default_EOF(self):
-        self.assertEqual(console.do_EOF(self,''), True)
-    def test_default_EOF(self):
-        self.assertEqual(console.do_EOF(self,''), True)
-    def test_default_EOF(self):
-        self.assertEqual(console.do_EOF(self,''), True)
-    def test_default_EOF(self):
-        self.assertEqual(console.do_EOF(self,''), True)
-    def test_default_EOF(self):
-        self.assertEqual(console.do_EOF(self,''), True)
-    def test_default_EOF(self):
-        self.assertEqual(console.do_EOF(self,''), True)
-    def test_default_EOF(self):
-        self.assertEqual(console.do_EOF(self,''), True)
-    def test_default_EOF(self):
-        self.assertEqual(console.do_EOF(self,''), True)
-    def test_default_EOF(self):
-        self.assertEqual(console.do_EOF(self,''), True)
-    def test_default_EOF(self):
-        self.assertEqual(console.do_EOF(self,''), True)
-    def test_default_EOF(self):
-        self.assertEqual(console.do_EOF(self,''), True)
-    def test_default_EOF(self):
-        self.assertEqual(console.do_EOF(self,''), True)
-    def test_default_EOF(self):
-        self.assertEqual(console.do_EOF(self,''), True)
-    def test_default_EOF(self):
-        self.assertEqual(console.do_EOF(self,''), True)
+        "test"
+        self.assertEqual(console.do_update(self, ''), False)
+        self.assertFalse(console.do_update(self, ''))
