@@ -10,8 +10,8 @@ from global_usage import *
 from models import storage
 import models
 import shlex
-#print(global_usage.classes)
-#print(global_usage)
+# print(global_usage.classes)
+# print(global_usage)
 print(global_usage.City)
 
 
@@ -28,8 +28,7 @@ class HBNBCommand(cmd.Cmd):
         """
         The do_EOF function is called when the user enters EOF (End of File).
         This function is used to exit out of the program.
-        
-        
+
         :param self: Access variables that belongs to the class
         :param line: Pass in the line entered by the user
         :return: The string &quot;return&quot;
@@ -42,26 +41,28 @@ class HBNBCommand(cmd.Cmd):
         """
         The do_quit function is called when the user enters the 'quit' command.
         It prints a message and then terminates the program.
-        
+
         :param self: Access variables that belongs to the class
         :param line: Pass the command entered by the user
         :return: The boolean value true
         :doc-author: Trelent
         """
-        
+
         return True
 
     def do_create(self, className):
         """
         The do_create function creates a new instance of the specified class.
-        It then saves it to the JSON file and prints out the id number of the newly created object.
-        
-        :param self: Reference the attributes and methods of the class in which it is called
+        It then saves it to the JSON file and prints out
+        the id number of the newly created object.
+
+        :param self: Reference the attributes
+        and methods of the class in which it is called
         :param className: Create a new instance of the class
         :return: The id of the newly created instance
         :doc-author: Trelent
         """
-        
+
         if not className:
             print("** class name missing **")
         try:
@@ -73,15 +74,15 @@ class HBNBCommand(cmd.Cmd):
 
     def do_show(self, line):
         """
-        The do_show function shows an instance of a class based on the class name and id.
-        
-        
+        The do_show function shows an instance
+        of a class based on the class name and id.
+
         :param self: Access the attributes and methods of the class
         :param line: Store the user input
         :return: The object attributes and values
         :doc-author: Trelent
         """
-        if line in ["",None]:
+        if line in ["", None]:
             print("** class name missing **")
         else:
             words = line.split(' ')
@@ -95,14 +96,17 @@ class HBNBCommand(cmd.Cmd):
                     print("** no instance found **")
                 else:
                     print(storage.all()[key])
+
     def do_destroy(self, line):
         """
-        The do_destroy function deletes an instance based on the class name and id.
-        
-        
+        The do_destroy function deletes an instance
+        based on the class name and id.
+
         :param self: Reference the class itself
-        :param line: Pass the command line arguments to the function
-        :return: True if the destroy command is executed successfully
+        :param line: Pass the command line
+        arguments to the function
+        :return: True if the destroy command
+        is executed successfully
         :doc-author: Trelent
         """
         if not line:
@@ -126,32 +130,49 @@ class HBNBCommand(cmd.Cmd):
     def do_all(self, line):
         """
         The do_all function prints all the objects in storage.
-        
-        
+
+
         :param self: Reference the class itself
         :param line: Pass the command line arguments to the do_all function
         :return: A list of all the objects in storage
         :doc-author: Trelent
         """
-        
-        if line != "":
-            words = line.split(' ')
-            if words[0] not in storage.classes():
-                print("** class doesn't exist **")
-            else:
-                list_item = [str(obj) for key, obj in storage.all().items()
-                     if type(obj).__name__ == words[0]]
-                print(list_item)
+
+    def do_all(self, arg):
+        """
+        The do_all function prints all objects in the storage file.
+            Args:
+                arg (str): The class name to print out.
+                If no arg is passed, it will print all classes.
+
+        :param self: Access attributes and
+        methods of the class in python
+        :param arg: Know if the user wants
+        to see all the objects of a class or only one
+        :return: A list of objects
+        :doc-author: Trelent
+        """
+
+        list_args = shlex.split(arg)
+        if len(list_args) > 0 and list_args[0] not in classe:
+            print("** class doesn't exist **")
         else:
-            list_item = [str(obj) for key, obj in storage.all().items()]
-            print(list_item)
-    
+            list_result = []
+            for key, value in storage._FileStorage__objects.items():
+                if len(list_args) == 0:
+                    list_result.append(str(value))
+                elif list_args[0] == value.to_dict()["__class__"]:
+                    list_result.append(str(value))
+            print(list_result)
+
     def do_update(self, line):
         """
-        The do_update function updates an instance based on the class name and id
-        by adding or updating attribute (save the change into the JSON file).
-        
-        
+        The do_update function updates an instance
+        based on the class name and id
+        by adding or updating attribute
+        (save the change into the JSON file).
+
+
         :param self: Access to the class attributes and methods
         :param line: Pass the line entered by the user
         :return: The value that the setattr function returns
@@ -182,6 +203,7 @@ class HBNBCommand(cmd.Cmd):
                 return False
         setattr(models.storage.all()[strLine], data[2], data[3])
         models.storage.save()
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
