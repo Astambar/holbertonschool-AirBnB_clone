@@ -1,4 +1,7 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
+"""_summary_
+"""
+
 from models.base_model import BaseModel
 from models.city import City
 from models.place import Place
