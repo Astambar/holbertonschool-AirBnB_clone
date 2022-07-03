@@ -22,6 +22,7 @@ class HBNBCommand(cmd.Cmd):
     prompt = '(hbnb) '
 
     def emptyline(self):
+        "line void"
         pass
 
     def do_EOF(self, line):
