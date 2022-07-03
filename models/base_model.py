@@ -7,6 +7,7 @@
 import uuid
 from datetime import datetime
 import models
+import global_usage
 
 
 class BaseModel:
@@ -96,3 +97,5 @@ class BaseModel:
         dictionary['created_at'] = self.created_at.isoformat()
         dictionary['updated_at'] = self.updated_at.isoformat()
         return dictionary
+
+
