@@ -7,7 +7,6 @@ import global_usage
 
 
 class FileStorage:
-
     """Class for converting JSON to base class and vice versa."""
     __file_path = "file.json"
     __objects = {}
@@ -39,5 +38,4 @@ class FileStorage:
 
     def classes(self):
         """Retourn le  dictionaires des classes de référence"""
-
         return global_usage.classe
