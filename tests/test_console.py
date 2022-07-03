@@ -9,36 +9,21 @@ import models
 import shlex
 console = console.HBNBCommand
 
+import pycodestyle
+from datetime import datetime
 
-class DefaultConsoleTest(unittest.TestCase):
-    def test_default_EOF(self):
-        "test"
-        self.assertEqual(console.do_EOF(self, ''), True)
-        self.assertTrue(console.do_EOF(self, ''))
 
-    def test_default_emptyline(self):
-        "test"
-        self.assertEqual(console.emptyline(self), None)
+class TestHBNBCommand(unittest.TestCase):
+    """ Test class HBNBCommand """
+    def test_class_style(self):
+        """Test that we conform to Pycodestyle."""
+        style = pycodestyle.StyleGuide(quiet=True)
+        result = style.check_files(['console.py'])
+        self.assertEqual(result.total_errors, 0)
 
-    def test_default_quit(self):
-        "test"
-        self.assertEqual(console.do_quit(self, ''), True)
-        self.assertTrue(console.do_quit(self, ''))
+    def test_prompt(self):
+        """test the prompt format"""
+        self.assertEqual(console.prompt, "(hbnb) ")
 
-    def test_default_create(self):
-        "test"
-        self.assertEqual(console.do_create(self, 'Amenity'), None)
-
-    def test_default_show(self):
-        "test"
-        self.assertEqual(console.do_show(self, 'Amenity'), None)
-
-    def test_default_destroy(self):
-        "test"
-        self.assertEqual(console.do_destroy(self, ''), False)
-        self.assertFalse(console.do_destroy(self, ''))
-
-    def test_default_update(self):
-        "test"
-        self.assertEqual(console.do_update(self, ''), False)
-        self.assertFalse(console.do_update(self, ''))
+if __name__ == '__main__':
+    unittest.main()
