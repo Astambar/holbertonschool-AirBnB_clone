@@ -203,6 +203,7 @@ class HBNBCommand(cmd.Cmd):
                 return False
         setattr(models.storage.all()[strLine], data[2], data[3])
         models.storage.save()
+
     def default(self, arg):
         """
         Update a command interpreter by default
