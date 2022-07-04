@@ -40,15 +40,8 @@ class HBNBCommand(cmd.Cmd):
 
     def do_quit(self, line):
         """
-        The do_quit function is called when the user enters the 'quit' command.
-        It prints a message and then terminates the program.
-
-        :param self: Access variables that belongs to the class
-        :param line: Pass the command entered by the user
-        :return: The boolean value true
-        :doc-author: Trelent
+        Quit command to exit the program
         """
-
         return True
 
     def do_create(self, className):
@@ -128,7 +121,9 @@ class HBNBCommand(cmd.Cmd):
         del models.storage.all()[classNameId]
         models.storage.save()
 
-    def do_all(self, line):
+
+
+    def do_all(self, arg):
         """
         The do_all function prints all the objects in storage.
 
@@ -136,21 +131,6 @@ class HBNBCommand(cmd.Cmd):
         :param self: Reference the class itself
         :param line: Pass the command line arguments to the do_all function
         :return: A list of all the objects in storage
-        :doc-author: Trelent
-        """
-
-    def do_all(self, arg):
-        """
-        The do_all function prints all objects in the storage file.
-            Args:
-                arg (str): The class name to print out.
-                If no arg is passed, it will print all classes.
-
-        :param self: Access attributes and
-        methods of the class in python
-        :param arg: Know if the user wants
-        to see all the objects of a class or only one
-        :return: A list of objects
         :doc-author: Trelent
         """
 
