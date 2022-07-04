@@ -121,8 +121,6 @@ class HBNBCommand(cmd.Cmd):
         del models.storage.all()[classNameId]
         models.storage.save()
 
-
-
     def do_all(self, arg):
         """
         The do_all function prints all the objects in storage.
