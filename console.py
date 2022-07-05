@@ -230,33 +230,6 @@ class HBNBCommand(cmd.Cmd):
                 count += 1
         print(count)
 
-    def default(self, line):
-        """
-        Update a command interpreter by default
-        """
-        array = line.split(".")
-        if array[0] in HBNBCommand.classes:
-            if array[1] == "all()":
-                return self.do_all(array[0])
-            if array[1] == "count()":
-                return self.do_count(array[0])
-            if array[1][:4] == "show":
-                new_array = array[1].split("(")
-                new_new_array = new_array[1].split(")")
-                new_arg = f"{array[0]} {new_new_array[0]}"
-                return self.do_show(new_arg)
-            if array[1][:7] == "destroy":
-                new_array = array[1].split("(")
-                new_new_array = new_array[1].split(")")
-                new_arg = f"{array[0]} {new_new_array[0]}"
-                return self.do_destroy(new_arg)
-            if array[1][:6] == "update":
-                new_array = array[1].split("(")
-                new_new_array = new_array[1].split(")")
-                ar = new_new_array[0].split(",")
-                new_arg = f"{array[0]} {ar[0]} {ar[1]} {ar[2]}"
-                return self.do_update(new_arg)
-
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
