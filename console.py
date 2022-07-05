@@ -12,7 +12,7 @@ import models
 import shlex
 # print(global_usage.classes)
 # print(global_usage)
-print(global_usage.City)
+# print(global_usage.City)
 
 
 class HBNBCommand(cmd.Cmd):
@@ -22,17 +22,28 @@ class HBNBCommand(cmd.Cmd):
     prompt = '(hbnb) '
 
     def emptyline(self):
-        "line void"
+        """
+        La fonction emptyline est appelée lorsqu'une ligne vide
+        est entré en réponse à l'invite.
+        Une ligne vide est renvoyée par l'interpréteur
+        si une déclaration est fournie et qu'elle n'a pas de contenu.
+        La fonction ne fait rien.
+
+        :param self : référence l'instance de l'objet lui-même
+        :retour: Aucun
+        :doc-author: Trelent
+        """
         pass
 
     def do_EOF(self, line):
         """
-        The do_EOF function is called when the user enters EOF (End of File).
-        This function is used to exit out of the program.
+        La fonction do_EOF est appelée lorsque
+        l'utilisateur saisit EOF (End of File).
+        Cette fonction est utilisée pour sortir du programme.
 
-        :param self: Access variables that belongs to the class
-        :param line: Pass in the line entered by the user
-        :return: The string &quot;return&quot;
+        :param self : accède aux variables appartenant à la classe
+        :param line : Passe la ligne saisie par l'utilisateur
+        :return : la chaîne &quot;return&quot;
         :doc-author: Trelent
         """
         print()
@@ -40,20 +51,29 @@ class HBNBCommand(cmd.Cmd):
 
     def do_quit(self, line):
         """
-        Quit command to exit the program
+        La fonction do_quit est appelée lorsque
+        l'utilisateur entre la commande 'quit'.
+        Il imprime un message puis termine le programme.
+
+        :param self : Accéder aux attributs de la classe
+        :param line : Transmet la commande saisie par
+        l'utilisateur à la fonction
+        :return : une chaîne &quot;quitter la session
+        :doc-author: Trelent
         """
         return True
 
     def do_create(self, className):
         """
-        The do_create function creates a new instance of the specified class.
-        It then saves it to the JSON file and prints out
-        the id number of the newly created object.
+        La fonction do_create crée une nouvelle instance
+        de la classe spécifiée.
+        Il l'enregistre ensuite dans le fichier JSON et imprime
+        le numéro d'identification de l'objet nouvellement créé.
 
-        :param self: Reference the attributes
-        and methods of the class in which it is called
-        :param className: Create a new instance of the class
-        :return: The id of the newly created instance
+        :param self : référence les attributs
+        et les méthodes de la classe dans laquelle il est appelé
+        :param className : crée une nouvelle instance de la classe
+        :return : L'identifiant de l'instance nouvellement créée
         :doc-author: Trelent
         """
 
@@ -68,12 +88,12 @@ class HBNBCommand(cmd.Cmd):
 
     def do_show(self, line):
         """
-        The do_show function shows an instance
-        of a class based on the class name and id.
+        La fonction do_show affiche une instance
+        d'une classe en fonction du nom et de l'identifiant de la classe.
 
-        :param self: Access the attributes and methods of the class
-        :param line: Store the user input
-        :return: The object attributes and values
+        :param self : Accéder aux attributs et méthodes de la classe
+        :param line : stocke l'entrée de l'utilisateur
+        :return: Les attributs et valeurs de l'objet
         :doc-author: Trelent
         """
         if line in ["", None]:
@@ -93,14 +113,14 @@ class HBNBCommand(cmd.Cmd):
 
     def do_destroy(self, line):
         """
-        The do_destroy function deletes an instance
-        based on the class name and id.
+        La fonction do_destroy supprime une instance
+        basé sur le nom et l'identifiant de la classe.
 
-        :param self: Reference the class itself
-        :param line: Pass the command line
-        arguments to the function
-        :return: True if the destroy command
-        is executed successfully
+        :param self : référence la classe elle-même
+        :param line : Passez la ligne de commande
+        arguments de la fonction
+        :return : Vrai si la commande destroy
+        est réalisé avec succès
         :doc-author: Trelent
         """
         if not line:
@@ -121,18 +141,19 @@ class HBNBCommand(cmd.Cmd):
         del models.storage.all()[classNameId]
         models.storage.save()
 
-    def do_all(self, arg):
+    def do_all(self, line):
         """
-        The do_all function prints all the objects in storage.
+        La fonction do_all imprime tous les objets stockés.
 
 
-        :param self: Reference the class itself
-        :param line: Pass the command line arguments to the do_all function
-        :return: A list of all the objects in storage
+        :param self : référence la classe elle-même
+        :param line : Transmettez les arguments
+        de la ligne de commande à la fonction do_all
+        :retour: Une liste de tous les objets stockés
         :doc-author: Trelent
         """
 
-        list_args = shlex.split(arg)
+        list_args = shlex.split(line)
         if len(list_args) > 0 and list_args[0] not in classe:
             print("** class doesn't exist **")
         else:
@@ -146,17 +167,18 @@ class HBNBCommand(cmd.Cmd):
 
     def do_update(self, line):
         """
-        The do_update function updates an instance
-        based on the class name and id
-        by adding or updating attribute
-        (save the change into the JSON file).
+        La fonction do_update met à jour une instance
+        basé sur le nom et l'identifiant de la classe
+        en ajoutant ou en mettant à jour un attribut
+        (enregistrez la modification dans le fichier JSON).
 
 
-        :param self: Access to the class attributes and methods
-        :param line: Pass the line entered by the user
-        :return: The value that the setattr function returns
+        :param self : Accès aux attributs et méthodes de la classe
+        :param line : Passe la ligne saisie par l'utilisateur
+        :return : la valeur renvoyée par la fonction setattr
         :doc-author: Trelent
         """
+
         print(line)
         if not line:
             print("** class name missing ** ")
