@@ -10,6 +10,7 @@ from global_usage import *
 from models import storage
 import models
 import shlex
+import json
 # print(global_usage.classes)
 # print(global_usage)
 # print(global_usage.City)
@@ -205,11 +206,35 @@ class HBNBCommand(cmd.Cmd):
         setattr(models.storage.all()[strLine], data[2], data[3])
         models.storage.save()
 
-    def default(self, arg):
+    def do_count(self, line):
+        """
+        La fonction do_count compte le nombre d'instances d'une classe.
+            Si aucun argument n'est passé,
+            il compte toutes les instances dans le stockage.
+            Sinon, il compte toutes les instances correspondant à l'argument.
+
+        :param self : Accéder aux attributs et méthodes de la classe
+        :param line : Vérifie si l'utilisateur a entré un nom de classe
+        :return : le nombre d'instances de la classe spécifiée
+        :doc-author: Trelent
+        """
+
+        count = 0
+        if line:
+            list_args = shlex.split(line)
+            for key, value in storage._FileStorage__objects.items():
+                if value.__class__.__name__ == list_args[0]:
+                    count += 1
+        else:
+            for _ in storage._FileStorage__objects.keys():
+                count += 1
+        print(count)
+
+    def default(self, line):
         """
         Update a command interpreter by default
         """
-        array = arg.split(".")
+        array = line.split(".")
         if array[0] in HBNBCommand.classes:
             if array[1] == "all()":
                 return self.do_all(array[0])
